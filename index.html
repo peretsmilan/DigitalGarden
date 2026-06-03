@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="Digital GardenLOGO.png">
+
+    <style>
+        .protected-content {
+            display: none;
+        }
+
+        .nav-logo-img {
+            height: 80px;      
+            width: auto;        
+            display: inline-block;
+            vertical-align: middle;
+            mix-blend-mode: screen; 
+            z-index: 2;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+            transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-left 0.4s ease;
+        }
+
+        .nav-logo:hover .logo-text {
+            max-width: 200px;
+            opacity: 1;
+            margin-left: 12px;
+            margin-bottom:10px;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <title>Welcome to DigitalGarden | By DangerEditz</title>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>DigitalGarden</h1>
+            <p>
+                Welcome to DigitalGarden! To access this website's content, please sign up or sign in using the form below. By creating an account, you'll gain access to a wide range of features and resources. 
+                
+                
+            </p>
+        </div>
+    </header>
+
+    <div class="container" id="container">
+
+        <!-- SIGN UP -->
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+
+                <div class="social-icons">
+                    <a href="javascript:void(0)" class="icon google-btn">
+                        <i class="fa-brands fa-google-plus-g"></i>
+                    </a>
+
+                    <a href="javascript:void(0)" class="icon github-btn">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+
+                <span>or use your email for registration</span>
+
+                <input type="text" id="signup-name" placeholder="Name">
+                <input type="email" id="signup-email" placeholder="Email">
+                <input type="password" id="signup-password" placeholder="Password">
+
+                <button id="signup-btn" type="button">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- SIGN IN -->
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sign In</h1>
+
+                <div class="social-icons">
+                    <a href="javascript:void(0)" class="icon google-btn">
+                        <i class="fa-brands fa-google-plus-g"></i>
+                    </a>
+
+                    <a href="javascript:void(0)" class="icon github-btn">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+
+                <span>or use your email password</span>
+
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Password">
+
+                <a href="#">Forget Your Password?</a>
+
+                <button id="login-btn" type="button">Sign In</button>
+            </form>
+        </div>
+
+        <!-- TOGGLE PANEL -->
+        <div class="toggle-container">
+            <div class="toggle">
+
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to access all features</p>
+
+                    
+                    <button id="login">Sign In</button>
+                </div>
+
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to access all features</p>
+
+                    
+                    <button id="register">Sign Up</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 DigitalGarden. Built by DangerEditz.</p>
+    </footer>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+
+    <script src="login.js"></script>
+
+</body>
+</html>

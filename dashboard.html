@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalGarden | By DangerEditz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="webstyle.css">
+    <link rel="icon" type="image/png" href="assets/Digital GardenLOGO.png">
+
+    <style>
+        .protected-content {
+            display: none;
+        }
+
+        .nav-logo-img {
+            height: 80px;      
+            width: auto;        
+            display: inline-block;
+            vertical-align: middle;
+            mix-blend-mode: screen; 
+            z-index: 2;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+            transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-left 0.4s ease;
+        }
+
+        .nav-logo:hover .logo-text {
+            max-width: 200px;
+            opacity: 1;
+            margin-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .software-card, .social-card, .tutorial-card, 
+        .software-section h2, .software-section .section-desc,
+        .tools-section h2, .tools-section .section-desc,
+        .settings-sidebar-body > * {
+            transition: opacity 0.4s ease-in-out !important;
+        }
+
+        body.ghost-mode .software-card,
+        body.ghost-mode .social-card,
+        body.ghost-mode .tutorial-card,
+        body.ghost-mode .software-section h2,
+        body.ghost-mode .software-section .section-desc,
+        body.ghost-mode .settings-sidebar-body > * {
+            opacity: 0.15;
+        }
+
+        body.ghost-mode .software-card:hover,
+        body.ghost-mode .social-card:hover,
+        body.ghost-mode .tutorial-card:hover {
+            opacity: 1 !important;
+        }
+
+        body.ghost-mode .software-section:hover h2,
+        body.ghost-mode .software-section:hover .section-desc,
+        body.ghost-mode .tools-section:hover h2,
+        body.ghost-mode .tools-section:hover .section-desc {
+            opacity: 1 !important;
+        }
+
+        body.ghost-mode .settings-sidebar-body:hover > * {
+            opacity: 1 !important;
+        }
+
+        header, header *, .navbar, .navbar * {
+            opacity: 1 !important;
+        }
+    </style>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBh5-synOltElhLq0oAMqm-LDf8GQGUpyc",
+            authDomain: "editlab-aafbd.firebaseapp.com",
+            projectId: "editlab-aafbd",
+            storageBucket: "editlab-aafbd.firebasestorage.app",
+            messagingSenderId: "929376141829",
+            appId: "1:929376141829:web:c6ba23efe25aaf78e4526c",
+            measurementId: "G-3DDJNPV5C3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = "index.html";
+            } else {
+                console.log("Access verified for account:", user.email);
+                document.getElementById("garden-app").style.display = "block";
+
+                const emailEl = document.getElementById("settings-email-display");
+                if (emailEl) emailEl.textContent = user.email;
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <div id="loader-viewport">
+        <div id="container">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div id="h3">Loading...</div>
+        </div>
+    </div>
+
+    <div id="garden-app" class="protected-content">
+
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo" data-target="home-page">
+                    <img src="assets/Digital Garden.png" alt="Digital Garden Logo" class="nav-logo-img">
+                    <span class="logo-text">DigitalGarden</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-route active" data-target="home-page">Home</a></li>
+                    <li><a href="#" class="nav-route" data-target="about-page">About</a></li>
+                    <li><a href="#" class="nav-route" data-target="tutorials-page">Guides</a></li>
+                    <li><a href="#" id="settings-trigger-btn" class="settings-nav-icon" aria-label="Open Settings"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div id="settings-panel-sidebar" class="settings-sidebar">
+            <div class="settings-sidebar-header">
+                <h3>Settings</h3>
+                <span id="close-settings-sidebar" class="close-sidebar-btn">&times;</span>
+            </div>
+            <div class="settings-sidebar-body">
+                <p class="section-desc">
+                    Manage your DigitalGarden experience from one place. Customize your preferences, adjust account settings, and control how the website works for you. Changes made here are saved automatically.
+                </p>
+
+                <div class="settings-section account-wrapper">
+                    <h4 class="settings-section-title">Account</h4>
+                    <div class="profile-block">
+                        <p class="profile-email">Signed in as <span id="settings-email-display">—</span></p>
+                        <input type="text" id="display-name-input" class="name-input" placeholder="Set a display name..." />
+                    </div>
+                    
+                    <div id="apply-changes-prompt" class="apply-prompt-box">
+                        <span>Apply Changes?</span>
+                        <button type="button" id="save-display-name-btn">Save</button>
+                    </div>
+
+                    <button id="logout-btn" class="logout-danger-btn">
+                        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                    </button>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-section-title">Appearance</h4>
+
+                    <div class="setting-item font-control-group">
+                        <label for="font-size-select" class="setting-label">Text Size</label>
+                        <div class="select-wrapper">
+                            <select id="font-size-select" class="custom-select">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Normal</option>
+                                <option value="large">Big</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item checkbox-control-group">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="compact-toggle-checkbox" class="real-checkbox">
+                            <span class="custom-checkbox-box"></span>
+                            <span class="checkbox-label">Squish boxes together</span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item checkbox-control-group" style="margin-top: 12px;">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="ghost-toggle-checkbox" class="real-checkbox">
+                            <span class="custom-checkbox-box"></span>
+                            <span class="checkbox-label">Enable Ghost Mode</span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item checkbox-control-group" style="margin-top: 12px;">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="audio-toggle-checkbox" class="real-checkbox" checked>
+                            <span class="custom-checkbox-box"></span>
+                            <span class="checkbox-label">UI Sound Effects</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-section-title">Language & Region</h4>
+
+                    <div class="setting-item font-control-group">
+                        <label for="language-select" class="setting-label">Language</label>
+                        <div class="select-wrapper">
+                            <select id="language-select" class="custom-select">
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item font-control-group" style="margin-top: 12px;">
+                        <label for="date-format-select" class="setting-label">Date Format</label>
+                        <div class="select-wrapper">
+                            <select id="date-format-select" class="custom-select">
+                                <option value="mdy">MM/DD/YYYY</option>
+                                <option value="dmy">DD/MM/YYYY</option>
+                                <option value="ymd">YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-section-title">Accessibility</h4>
+
+                    <div class="setting-item checkbox-control-group">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="reduce-motion-checkbox" class="real-checkbox">
+                            <span class="custom-checkbox-box"></span>
+                            <span class="checkbox-label">Reduce Motion</span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item checkbox-control-group" style="margin-top: 12px;">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="high-contrast-checkbox" class="real-checkbox">
+                            <span class="custom-checkbox-box"></span>
+                            <span class="checkbox-label">High Contrast</span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item font-control-group" style="margin-top: 16px;">
+                        <label for="cursor-size-select" class="setting-label">Cursor Size</label>
+                        <div class="select-wrapper">
+                            <select id="cursor-size-select" class="custom-select">
+                                <option value="normal">Normal</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <main class="main-content">
+            
+            <div id="home-page" class="page-section">
+                <header class="welcome-garden">
+                    <div class="header-video-container">
+                        <video id="manim-video" muted playsinline class="header-video">
+                            <source src="assets/TestAnimation.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <hr class="welcome-divider header-gap-divider">
+                    <p class="subtitle">This website features completely free software, games, editing, and coding tools, and much more with download links for each item!</p>
+                </header>
+
+                <div class="software-section">
+                    <h2>Software</h2>
+                    <p class="section-desc">Explore my collection of trustworthy software, that might just make your life easier!</p>
+                    
+                    <div class="software-grid">
+                        <div class="software-card" data-software="vscode">
+                            <h3>VSCode</h3>
+                            <p>Full IDE with supported Extensions from trusted authors and 3rd Party Authors!</p>
+                        </div>
+
+                        <div class="software-card" data-software="obs">
+                            <h3>OBS Studio</h3>
+                            <p>Live streaming, video recording, and layout configuration.</p>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="tools-section" style="margin-top: 3rem; width: 100%; max-width: 800px;">
+                    <div class="software-section">
+                        <h2>Tools & Optimizations</h2>
+                        <p class="section-desc">Explore my collection of Tools made for Optimization, and debloating!</p>
+                        
+                        <div class="software-grid">
+                            <div class="software-card" data-software="powertoys">
+                                <h3>PowerToys</h3>
+                                <p>A tool made from Microsoft, which includes useful features that will surely help you!</p>
+                            </div>
+
+                            <div class="software-card" data-software="virtualbox">
+                                <h3>VirtualBox</h3>
+                                <p>A tool that will let you run a machine, inside of your machine! Which you can test with.</p>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div id="about-page" class="page-section hidden">
+                <header class="welcome-garden">
+                    <h1>About the Garden</h1>
+                    <p class="subtitle">A digital greenhouse that is FREE from ads, pop-ups, and any type of payment bribing.</p>
+                    <hr class="welcome-divider">
+                </header>
+
+                <div class="software-section">
+                    <h2>My Philosophy</h2>
+                    <p class="section-desc">DigitalGarden was built out of a frustration with bloated, ad-ridden software distribution sites. No ads, and everything featured here is completely free, vetted, and optimized for maximum performance. No hidden telemetry, no tracking-just pure utility.</p>
+                    
+                    <h2 style="margin-top: 3rem; font-size: 1.6rem;">Connect With Me</h2>
+                    <p class="section-desc">Check out my latest videos, and edits!</p>
+                    
+                    <div class="social-grid">
+                        <div class="social-card">
+                            <a href="https://github.com/peretsmilan" target="_blank" style="text-decoration: none; color: inherit;">
+                                <h3>GitHub</h3>
+                                <p>Repositories & Open Source Code</p>
+                            </a>
+                        </div>
+                        <div class="social-card">
+                            <a href="https://youtube.com/@DangerEditzREAL" target="_blank" style="text-decoration: none; color: inherit;">
+                                <h3>YouTube</h3>
+                                <p>Short-Form videos. And short-edits.</p>
+                            </a>
+                        </div>
+                        <div class="social-card">
+                            <a href="https://tiktok.com/@dangereditzreal" target="_blank" style="text-decoration: none; color: inherit;">
+                                <h3>TikTok</h3>
+                                <p>Another place where I share my edits!</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tutorials-page" class="page-section hidden">
+                <header class="welcome-garden">
+                    <h1>Guides & Tutorials for Everything!</h1>
+                    <p class="subtitle">Step-by-step breakdowns without the fluff. Learn low-level optimization, video layout setups, and development workflows.</p>
+                    <hr class="welcome-divider">
+                </header>
+
+                <div class="software-section">
+                    <h2>Available Library</h2>
+                    <p class="section-desc">Click on any guide below to deep-dive into environment configurations, layout mechanics, and performance optimizations.</p>
+                    
+                    <div class="tutorial-grid">
+                        <div class="tutorial-card" data-tutorial="ligatures">
+                            <div class="tutorial-badge">Coding</div>
+                            <h3>VSCode Font Ligatures</h3>
+                            <p>Enhance code readability by merging character combinations like "==" and "=>" into clean visual symbols using JetBrains Mono.</p>
+                            <span class="tutorial-link">Read Guide &rarr;</span>
+                        </div>
+
+                        <div class="tutorial-card" data-tutorial="layouts">
+                            <div class="tutorial-badge">Editing</div>
+                            <h3>Perfect OBS Canvas Layouts</h3>
+                            <p>A zero-fluff guide to aligning your base resolution, canvas scaling, and audio tracks for seamless short-form video editing.</p>
+                            <span class="tutorial-link">Read Guide &rarr;</span>
+                        </div>
+
+                        <div class="tutorial-card" data-tutorial="bitrates">
+                            <div class="tutorial-badge">Optimization</div>
+                            <h3>CQP vs CBR Bitrates</h3>
+                            <p>Stop wasting hard drive space. Learn how Constant Rate Factor dynamics allocate bitrates efficiently for crystal-clear local recordings.</p>
+                            <span class="tutorial-link">Read Guide &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="software-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+
+    </div> 
+
+    <div class="footer">
+        <p>&copy; 2026 DigitalGarden by DangerEditz. All rights reserved.</p>
+    </div> 
+    
+    <script src="script.js" defer></script>
+
+</body>
+</html>
