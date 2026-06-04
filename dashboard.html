@@ -14,14 +14,14 @@
         }
 
         .nav-logo-img {
-            height: 80px;      
-            width: auto;        
+            height: 80px;
+            width: auto;
             display: inline-block;
             vertical-align: middle;
-            mix-blend-mode: screen; 
+            mix-blend-mode: screen;
             z-index: 2;
         }
-        
+
         .nav-logo {
             display: flex;
             align-items: center;
@@ -49,7 +49,7 @@
             margin-bottom: 10px;
         }
 
-        .software-card, .social-card, .tutorial-card, 
+        .software-card, .social-card, .tutorial-card,
         .software-section h2, .software-section .section-desc,
         .tools-section h2, .tools-section .section-desc,
         .settings-sidebar-body > * {
@@ -101,7 +101,7 @@
             measurementId: "G-3DDJNPV5C3"
         };
 
-        const app = initializeApp(firebaseConfig);
+        const app  = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
         onAuthStateChanged(auth, (user) => {
@@ -119,6 +119,8 @@
 </head>
 <body>
 
+
+
     <div id="loader-viewport">
         <div id="container">
             <div class="ring"></div>
@@ -129,8 +131,10 @@
         </div>
     </div>
 
+
     <div id="garden-app" class="protected-content">
 
+       
         <nav class="navbar">
             <div class="nav-container">
                 <a href="#" class="nav-logo" data-target="home-page">
@@ -138,51 +142,60 @@
                     <span class="logo-text">DigitalGarden</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#" class="nav-route active" data-target="home-page">Home</a></li>
-                    <li><a href="#" class="nav-route" data-target="about-page">About</a></li>
-                    <li><a href="#" class="nav-route" data-target="tutorials-page">Guides</a></li>
-                    <li><a href="#" id="settings-trigger-btn" class="settings-nav-icon" aria-label="Open Settings"><i class="fa-solid fa-gear"></i></a></li>
+                    <li><a href="#" class="nav-route active" data-target="home-page" data-i18n="nav-home">Home</a></li>
+                    <li><a href="#" class="nav-route" data-target="about-page" data-i18n="nav-about">About</a></li>
+                    <li><a href="#" class="nav-route" data-target="tutorials-page" data-i18n="nav-guides">Guides</a></li>
+                    <li>
+                        <a href="#" id="settings-trigger-btn" class="settings-nav-icon" aria-label="Open Settings">
+                            <i class="fa-solid fa-gear"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        
+
+       
         <div id="settings-panel-sidebar" class="settings-sidebar">
             <div class="settings-sidebar-header">
-                <h3>Settings</h3>
+                <h3 data-i18n="settings-title">Settings</h3>
                 <span id="close-settings-sidebar" class="close-sidebar-btn">&times;</span>
             </div>
+
             <div class="settings-sidebar-body">
-                <p class="section-desc">
+                <p class="section-desc" data-i18n="settings-desc">
                     Manage your DigitalGarden experience from one place. Customize your preferences, adjust account settings, and control how the website works for you. Changes made here are saved automatically.
                 </p>
 
                 <div class="settings-section account-wrapper">
-                    <h4 class="settings-section-title">Account</h4>
+                    <h4 class="settings-section-title" data-i18n="section-account">Account</h4>
+
                     <div class="profile-block">
                         <p class="profile-email">Signed in as <span id="settings-email-display">—</span></p>
                         <input type="text" id="display-name-input" class="name-input" placeholder="Set a display name..." />
                     </div>
-                    
+
                     <div id="apply-changes-prompt" class="apply-prompt-box">
                         <span>Apply Changes?</span>
                         <button type="button" id="save-display-name-btn">Save</button>
                     </div>
 
                     <button id="logout-btn" class="logout-danger-btn">
-                        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span data-i18n="btn-logout">Log Out</span>
                     </button>
                 </div>
 
+                
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Appearance</h4>
+                    <h4 class="settings-section-title" data-i18n="section-appearance">Appearance</h4>
 
                     <div class="setting-item font-control-group">
-                        <label for="font-size-select" class="setting-label">Text Size</label>
+                        <label for="font-size-select" class="setting-label" data-i18n="label-text-size">Text Size</label>
                         <div class="select-wrapper">
                             <select id="font-size-select" class="custom-select">
-                                <option value="small">Small</option>
-                                <option value="medium" selected>Normal</option>
-                                <option value="large">Big</option>
+                                <option value="small"  data-i18n="opt-small">Small</option>
+                                <option value="medium" data-i18n="opt-normal" selected>Normal</option>
+                                <option value="large"  data-i18n="opt-big">Big</option>
                             </select>
                         </div>
                     </div>
@@ -191,7 +204,7 @@
                         <label class="custom-checkbox-container">
                             <input type="checkbox" id="compact-toggle-checkbox" class="real-checkbox">
                             <span class="custom-checkbox-box"></span>
-                            <span class="checkbox-label">Squish boxes together</span>
+                            <span class="checkbox-label" data-i18n="checkbox-compact">Squish boxes together</span>
                         </label>
                     </div>
 
@@ -199,7 +212,7 @@
                         <label class="custom-checkbox-container">
                             <input type="checkbox" id="ghost-toggle-checkbox" class="real-checkbox">
                             <span class="custom-checkbox-box"></span>
-                            <span class="checkbox-label">Enable Ghost Mode</span>
+                            <span class="checkbox-label" data-i18n="checkbox-ghost">Enable Ghost Mode</span>
                         </label>
                     </div>
 
@@ -207,28 +220,29 @@
                         <label class="custom-checkbox-container">
                             <input type="checkbox" id="audio-toggle-checkbox" class="real-checkbox" checked>
                             <span class="custom-checkbox-box"></span>
-                            <span class="checkbox-label">UI Sound Effects</span>
+                            <span class="checkbox-label" data-i18n="checkbox-audio">UI Sound Effects</span>
                         </label>
                     </div>
                 </div>
 
+                
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Language & Region</h4>
+                    <h4 class="settings-section-title" data-i18n="section-language">Language & Region</h4>
 
                     <div class="setting-item font-control-group">
-                        <label for="language-select" class="setting-label">Language</label>
+                        <label for="language-select" class="setting-label" data-i18n="label-language">Language</label>
                         <div class="select-wrapper">
                             <select id="language-select" class="custom-select">
                                 <option value="en">English</option>
                                 <option value="es">Spanish</option>
-                                <option value="fr">French</option>
+                                <option value="uk">Ukrainian</option>
                                 <option value="de">German</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="setting-item font-control-group" style="margin-top: 12px;">
-                        <label for="date-format-select" class="setting-label">Date Format</label>
+                        <label for="date-format-select" class="setting-label" data-i18n="label-date-format">Date Format</label>
                         <div class="select-wrapper">
                             <select id="date-format-select" class="custom-select">
                                 <option value="mdy">MM/DD/YYYY</option>
@@ -239,14 +253,15 @@
                     </div>
                 </div>
 
+               
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Accessibility</h4>
+                    <h4 class="settings-section-title" data-i18n="section-accessibility">Accessibility</h4>
 
                     <div class="setting-item checkbox-control-group">
                         <label class="custom-checkbox-container">
                             <input type="checkbox" id="reduce-motion-checkbox" class="real-checkbox">
                             <span class="custom-checkbox-box"></span>
-                            <span class="checkbox-label">Reduce Motion</span>
+                            <span class="checkbox-label" data-i18n="checkbox-reduce-motion">Reduce Motion</span>
                         </label>
                     </div>
 
@@ -254,16 +269,16 @@
                         <label class="custom-checkbox-container">
                             <input type="checkbox" id="high-contrast-checkbox" class="real-checkbox">
                             <span class="custom-checkbox-box"></span>
-                            <span class="checkbox-label">High Contrast</span>
+                            <span class="checkbox-label" data-i18n="checkbox-high-contrast">High Contrast</span>
                         </label>
                     </div>
 
                     <div class="setting-item font-control-group" style="margin-top: 16px;">
-                        <label for="cursor-size-select" class="setting-label">Cursor Size</label>
+                        <label for="cursor-size-select" class="setting-label" data-i18n="label-cursor">Cursor Size</label>
                         <div class="select-wrapper">
                             <select id="cursor-size-select" class="custom-select">
-                                <option value="normal">Normal</option>
-                                <option value="large">Large</option>
+                                <option value="normal" data-i18n="opt-cursor-normal">Normal</option>
+                                <option value="large"  data-i18n="opt-cursor-large">Large</option>
                             </select>
                         </div>
                     </div>
@@ -272,8 +287,10 @@
             </div>
         </div>
 
+
         <main class="main-content">
-            
+
+           
             <div id="home-page" class="page-section">
                 <header class="welcome-garden">
                     <div class="header-video-container">
@@ -282,44 +299,47 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-
                     <hr class="welcome-divider header-gap-divider">
-                    <p class="subtitle">This website features completely free software, games, editing, and coding tools, and much more with download links for each item!</p>
+                    <p class="subtitle" data-i18n="subtitle-home">
+                        This website features completely free software, games, editing, and coding tools, and much more with download links for each item!
+                    </p>
                 </header>
 
                 <div class="software-section">
-                    <h2>Software</h2>
-                    <p class="section-desc">Explore my collection of trustworthy software, that might just make your life easier!</p>
-                    
+                    <h2 data-i18n="section-software">Software</h2>
+                    <p class="section-desc" data-i18n="section-software-desc">
+                        Explore my collection of trustworthy software, that might just make your life easier!
+                    </p>
+
                     <div class="software-grid">
                         <div class="software-card" data-software="vscode">
                             <h3>VSCode</h3>
                             <p>Full IDE with supported Extensions from trusted authors and 3rd Party Authors!</p>
                         </div>
-
                         <div class="software-card" data-software="obs">
                             <h3>OBS Studio</h3>
                             <p>Live streaming, video recording, and layout configuration.</p>
                         </div>
-                    </div> 
+                    </div>
                 </div>
 
                 <div class="tools-section" style="margin-top: 3rem; width: 100%; max-width: 800px;">
                     <div class="software-section">
-                        <h2>Tools & Optimizations</h2>
-                        <p class="section-desc">Explore my collection of Tools made for Optimization, and debloating!</p>
-                        
+                        <h2 data-i18n="section-tools">Tools & Optimizations</h2>
+                        <p class="section-desc" data-i18n="section-tools-desc">
+                            Explore my collection of Tools made for Optimization, and debloating!
+                        </p>
+
                         <div class="software-grid">
                             <div class="software-card" data-software="powertoys">
                                 <h3>PowerToys</h3>
                                 <p>A tool made from Microsoft, which includes useful features that will surely help you!</p>
                             </div>
-
                             <div class="software-card" data-software="virtualbox">
                                 <h3>VirtualBox</h3>
                                 <p>A tool that will let you run a machine, inside of your machine! Which you can test with.</p>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,11 +353,13 @@
 
                 <div class="software-section">
                     <h2>My Philosophy</h2>
-                    <p class="section-desc">DigitalGarden was built out of a frustration with bloated, ad-ridden software distribution sites. No ads, and everything featured here is completely free, vetted, and optimized for maximum performance. No hidden telemetry, no tracking-just pure utility.</p>
-                    
+                    <p class="section-desc">
+                        DigitalGarden was built out of a frustration with bloated, ad-ridden software distribution sites. No ads, and everything featured here is completely free, vetted, and optimized for maximum performance. No hidden telemetry, no tracking — just pure utility.
+                    </p>
+
                     <h2 style="margin-top: 3rem; font-size: 1.6rem;">Connect With Me</h2>
                     <p class="section-desc">Check out my latest videos, and edits!</p>
-                    
+
                     <div class="social-grid">
                         <div class="social-card">
                             <a href="https://github.com/peretsmilan" target="_blank" style="text-decoration: none; color: inherit;">
@@ -364,14 +386,18 @@
             <div id="tutorials-page" class="page-section hidden">
                 <header class="welcome-garden">
                     <h1>Guides & Tutorials for Everything!</h1>
-                    <p class="subtitle">Step-by-step breakdowns without the fluff. Learn low-level optimization, video layout setups, and development workflows.</p>
+                    <p class="subtitle">
+                        Step-by-step breakdowns without the fluff. Learn low-level optimization, video layout setups, and development workflows.
+                    </p>
                     <hr class="welcome-divider">
                 </header>
 
                 <div class="software-section">
                     <h2>Available Library</h2>
-                    <p class="section-desc">Click on any guide below to deep-dive into environment configurations, layout mechanics, and performance optimizations.</p>
-                    
+                    <p class="section-desc">
+                        Click on any guide below to deep-dive into environment configurations, layout mechanics, and performance optimizations.
+                    </p>
+
                     <div class="tutorial-grid">
                         <div class="tutorial-card" data-tutorial="ligatures">
                             <div class="tutorial-badge">Coding</div>
@@ -379,14 +405,12 @@
                             <p>Enhance code readability by merging character combinations like "==" and "=>" into clean visual symbols using JetBrains Mono.</p>
                             <span class="tutorial-link">Read Guide &rarr;</span>
                         </div>
-
                         <div class="tutorial-card" data-tutorial="layouts">
                             <div class="tutorial-badge">Editing</div>
                             <h3>Perfect OBS Canvas Layouts</h3>
                             <p>A zero-fluff guide to aligning your base resolution, canvas scaling, and audio tracks for seamless short-form video editing.</p>
                             <span class="tutorial-link">Read Guide &rarr;</span>
                         </div>
-
                         <div class="tutorial-card" data-tutorial="bitrates">
                             <div class="tutorial-badge">Optimization</div>
                             <h3>CQP vs CBR Bitrates</h3>
@@ -396,6 +420,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
 
         <div id="software-modal" class="modal">
@@ -405,12 +430,17 @@
             </div>
         </div>
 
-    </div> 
+    </div>
+
 
     <div class="footer">
-        <p>&copy; 2026 DigitalGarden by DangerEditz. All rights reserved.</p>
-    </div> 
-    
+    <p>&copy; <span id="current-year">2026</span> DigitalGarden by DangerEditz. All rights reserved.</p>
+</div>
+
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
     <script src="script.js" defer></script>
 
 </body>
