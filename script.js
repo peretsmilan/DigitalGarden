@@ -3,6 +3,8 @@ window.addEventListener("load", () => {
     const appContent   = document.getElementById("garden-app");
     const manimVideo   = document.getElementById("manim-video");
 
+    // Manim Animation Header, and Website Pre-Loader
+
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add("fade-out");
@@ -30,7 +32,7 @@ if (isLoggedIn !== "true") {
 }
 
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// Information for Modal Pop-ups
 
 const softwareData = {
     vscode: {
@@ -201,7 +203,7 @@ const tutorialData = {
 };
 
 
-// ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
+// Language Translations
 
 const translations = {
     en: {
@@ -339,7 +341,7 @@ function applyTranslations(lang) {
 }
 
 
-// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+// Navigation System
 
 const routes = document.querySelectorAll(".nav-route, .nav-logo");
 const pages  = document.querySelectorAll(".page-section");
@@ -371,7 +373,7 @@ routes.forEach(route => {
 });
 
 
-// ─── MODAL ───────────────────────────────────────────────────────────────────
+// Modal Layout, Pop-up, and animations
 
 const modal    = document.getElementById("software-modal");
 const modalBody = document.getElementById("modal-body");
@@ -475,14 +477,14 @@ window.addEventListener("keydown", (e) => {
 });
 
 
-// ─── DOM READY ───────────────────────────────────────────────────────────────
+// DOM Initialization for Event Listeners and Settings Management
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ── SOUND ──────────────────────────────────────────────────────────────
+    // Sound System (Haven't Added Yet)
 
     const audioToggle = document.getElementById("audio-toggle-checkbox");
-    const clickSound  = new Audio("assets/sounds/click.wav");
+    const clickSound  = new Audio("#");
     const swooshSound = new Audio("#");
 
     clickSound.volume  = 0.20;
@@ -516,7 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ── SETTINGS PANEL ─────────────────────────────────────────────────────
+    // Settings Panel Toggle
 
     const settingsTrigger = document.getElementById("settings-trigger-btn");
     const settingsPanel   = document.getElementById("settings-panel-sidebar");
@@ -544,7 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── LOGOUT ─────────────────────────────────────────────────────────────
+    // ─Logout
 
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
@@ -556,7 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── DISPLAY NAME ───────────────────────────────────────────────────────
+    // Display Name Customization
 
     const displayNameInput = document.getElementById("display-name-input");
     const applyPrompt      = document.getElementById("apply-changes-prompt");
@@ -617,7 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── FONT SIZE ──────────────────────────────────────────────────────────
+    // Font Size
 
     const sizeSelector = document.getElementById("font-size-select");
     if (sizeSelector) {
@@ -632,7 +634,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── COMPACT MODE ───────────────────────────────────────────────────────
+    // Compacted Layout Mode
 
     const spaceBox = document.getElementById("compact-toggle-checkbox");
     if (spaceBox) {
@@ -649,7 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── GHOST MODE ─────────────────────────────────────────────────────────
+    // "Ghost" Mode
 
     const ghostToggle = document.getElementById("ghost-toggle-checkbox");
     if (ghostToggle) {
@@ -660,7 +662,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── LANGUAGE ───────────────────────────────────────────────────────────
+    // Language Selection
 
     const languageSelect = document.getElementById("language-select");
     if (languageSelect) {
@@ -677,7 +679,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── DATE FORMAT ────────────────────────────────────────────────────────
+    // Date Format
 
     const dateFormatSelect = document.getElementById("date-format-select");
     if (dateFormatSelect) {
@@ -689,7 +691,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── REDUCE MOTION ──────────────────────────────────────────────────────
+    // Reduced Motion Mode
 
     const reduceMotionCheckbox = document.getElementById("reduce-motion-checkbox");
     if (reduceMotionCheckbox) {
@@ -704,7 +706,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── HIGH CONTRAST ──────────────────────────────────────────────────────
+    // High Contrast Mode
 
     const highContrastCheckbox = document.getElementById("high-contrast-checkbox");
     if (highContrastCheckbox) {
@@ -719,7 +721,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ── CURSOR SIZE ────────────────────────────────────────────────────────
+    // Cursor Size Control 
 
     const cursorSizeSelect = document.getElementById("cursor-size-select");
     if (cursorSizeSelect) {
