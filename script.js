@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
                 );
             }
 
-            setTimeout(() => preloader.remove(), 500);
+            setTimeout(() => preloader.remove(), 500); 
 
         }, 3000);
     }
@@ -133,6 +133,63 @@ const softwareData = {
             }
         ],
         downloadUrl: "https://www.virtualbox.org/"
+    },
+
+    // ── Editing Tools Section ─────────────────────────────────────────────────
+
+    capcut: {
+        title: "CapCut",
+        tagline: "Free, all-in-one video editor built for short-form and long-form content.",
+        description: "CapCut is a powerful yet accessible video editing tool packed with auto-captions, keyframe animations, chroma key, speed ramping, and a massive library of templates and effects — all completely free with no watermark on export.",
+        extensions: [
+            {
+                name: "Auto Captions",
+                desc: "Automatically transcribes your spoken audio and renders accurate, styled subtitles directly onto your timeline — no manual syncing required."
+            },
+            {
+                name: "Speed Ramping",
+                desc: "Smooth velocity curves let you ease in and out of slow-motion and hyper-speed sections with a single drag, a staple of modern short-form edits."
+            },
+            {
+                name: "Keyframe Animations",
+                desc: "Animate any property (scale, position, opacity, rotation) over time using intuitive keyframe controls without needing a plugin."
+            },
+            {
+                name: "Chroma Key (Green Screen)",
+                desc: "Remove any solid-color background from your footage and replace it with images, video, or transparent overlays using the built-in chroma key tool."
+            },
+            {
+                name: "Template Library",
+                desc: "Access thousands of trending effect templates that auto-sync cuts and transitions to your audio track for effortless viral-style edits."
+            }
+        ],
+        downloadUrl: "https://www.capcut.com/"
+    },
+
+    "davinci-editing": {
+        title: "DaVinci Resolve",
+        tagline: "Professional video editing and color grading software.",
+        description: "DaVinci Resolve is a powerful video editing and color grading suite that offers professional-grade tools for both editing and post-production workflows.",
+        extensions: [
+            {
+                name: "Advanced Color Grading",
+                desc: "Utilize Hollywood-caliber node-based color correction, HDR grading tools, and Magic Mask to achieve precise cinematic looks and perfect skin tones."
+            },
+            {
+                name: "Fairlight Audio Post",
+                desc: "Access a fully integrated digital audio workstation with professional tools for sound editing, mixing, EQ, and ADR directly inside your video project."
+            },
+            {
+                name: "Fusion VFX and Motion Graphics",
+                desc: "Create cinematic visual effects, compositing, and dynamic 2D/3D titles using a powerful node-based procedural workflow."
+
+            },
+            {
+                name: "Multi-User Collaboration",
+                desc: "Work simultaneously with other editors, colorists, and sound designers on the same project at the same time using a shared network database."
+            }
+        ],
+        downloadUrl: "https://www.blackmagicdesign.com/products/davinciresolve"
     }
 };
 
@@ -546,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ─Logout
+    // Logout
 
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
@@ -721,7 +778,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Cursor Size Control 
+    // Cursor Size Control
 
     const cursorSizeSelect = document.getElementById("cursor-size-select");
     if (cursorSizeSelect) {

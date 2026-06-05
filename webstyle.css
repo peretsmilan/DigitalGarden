@@ -110,11 +110,11 @@ body {
   flex-direction: column;
   align-items: center;
   opacity: 1;
-  transition: opacity 1s ease, display 1s ease allow-discrete;
+  transition: opacity 0.3s ease;
 }
 
 .page-section.hidden {
-  display: none;
+  display: none !important;
   opacity: 0;
 }
 
@@ -153,7 +153,6 @@ body {
   border-color: #2e2e38;
 }
 
-
 .software-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -162,14 +161,14 @@ body {
   justify-content: center;
 }
 
-/* Card Detail */
+
 .software-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 6px;
   padding: 1.5rem;
   width: 100%;
-  max-width: 340px;                 
+  max-width: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +177,11 @@ body {
   cursor: pointer;
   margin: 0 auto;
   box-sizing: border-box;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color  0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    transform     0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow    0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .software-card h3 {
@@ -214,7 +217,11 @@ body {
   text-decoration: none;
   color: var(--text-main);
   box-sizing: border-box;
-  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color  0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    transform     0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow    0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .social-card h3 {
@@ -229,13 +236,13 @@ body {
   font-size: 0.85rem;
 }
 
-.software-card:hover, 
-.tutorial-card:hover, 
+.software-card:hover,
+.tutorial-card:hover,
 .social-card:hover {
   border-color: #444452;
   background-color: #121214;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -424,7 +431,8 @@ body {
 
 .header-video {
   width: 100%;
-  height: auto;
+  height: 100%;       
+  object-fit: cover; 
   display: block;
 }
 
@@ -469,7 +477,11 @@ body {
   gap: 0.75rem;
   cursor: pointer;
   box-sizing: border-box;
-  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color     0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    transform        0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow       0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .tutorial-badge {
@@ -656,7 +668,7 @@ kbd {
   transform: scale(0.98);
 }
 
-/* Spiinning Loader Styles for Page Loading */
+/* Spinning Loader Styles for Page Loading */
 #loader-viewport {
   position: fixed;
   top: 0;
@@ -768,7 +780,12 @@ kbd {
 
 .software-card, .tutorial-card {
     padding: var(--box-padding, 24px);
-    transition: padding 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        padding          0.25s ease,
+        border-color     0.45s cubic-bezier(0.25, 1, 0.5, 1),
+        background-color 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+        transform        0.45s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow       0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .footer {
@@ -935,7 +952,6 @@ kbd {
     flex-direction: column;
 }
 
-/* FIXED: Changed to solid opaque background (var(--card-bg)) to cover the sliding prompt */
 .profile-block {
     position: relative;
     z-index: 5;
@@ -979,7 +995,6 @@ kbd {
     background: #1c1c22;
 }
 
-/* FIXED: Sliding prompt box hidden behind .profile-block layered at z-index 1 */
 .apply-prompt-box {
     position: relative;
     z-index: 1;
@@ -995,8 +1010,6 @@ kbd {
     font-family: system-ui, sans-serif;
     font-size: 0.85rem;
     color: #ffffff;
-    
-    /* Animation initial states */
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.25s ease, 
@@ -1005,7 +1018,6 @@ kbd {
     pointer-events: none;
 }
 
-/* Reveal State: drops out cleanly from under the box */
 .apply-prompt-box.show {
     opacity: 1;
     margin-top: 4px; 
@@ -1030,7 +1042,6 @@ kbd {
     background-color: #4338ca;
 }
 
-/* Accessibility: Reduced Motion, and High Contrast Modes */
 body.reduce-motion .software-card,
 body.reduce-motion .tutorial-card,
 body.reduce-motion .social-card,
@@ -1051,7 +1062,7 @@ body.reduce-motion .modal-content {
     opacity: 1 !important;
     transform: none !important;
 }
-
+/* High Contrast Mode */
 body.high-contrast {
     --card-border: #444452;
     --text-muted: #c0c0c8;
@@ -1064,6 +1075,7 @@ body.high-contrast .software-section {
     border-color: #444452;
 }
 
+/* Cursor Customization */
 body.cursor-large,
 body.cursor-large * {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M6 2l20 12-9 2-5 9z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 6 2, auto !important;

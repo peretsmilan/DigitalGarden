@@ -10,10 +10,7 @@
     <link rel="icon" type="image/png" href="assets/Digital GardenLOGO.png">
 
     <style>
-        /* Prevents unauthenticated users from seeing the app content before Firebase resolves */
-        .protected-content {
-            display: none;
-        }
+        .protected-content { display: none; }
 
         .nav-logo-img {
             height: 80px;
@@ -63,30 +60,20 @@
         body.ghost-mode .tutorial-card,
         body.ghost-mode .software-section h2,
         body.ghost-mode .software-section .section-desc,
-        body.ghost-mode .settings-sidebar-body > * {
-            opacity: 0.15;
-        }
+        body.ghost-mode .settings-sidebar-body > * { opacity: 0.15; }
 
         body.ghost-mode .software-card:hover,
         body.ghost-mode .social-card:hover,
-        body.ghost-mode .tutorial-card:hover {
-            opacity: 1 !important;
-        }
+        body.ghost-mode .tutorial-card:hover { opacity: 1 !important; }
 
         body.ghost-mode .software-section:hover h2,
         body.ghost-mode .software-section:hover .section-desc,
         body.ghost-mode .tools-section:hover h2,
-        body.ghost-mode .tools-section:hover .section-desc {
-            opacity: 1 !important;
-        }
+        body.ghost-mode .tools-section:hover .section-desc { opacity: 1 !important; }
 
-        body.ghost-mode .settings-sidebar-body:hover > * {
-            opacity: 1 !important;
-        }
+        body.ghost-mode .settings-sidebar-body:hover > * { opacity: 1 !important; }
 
-        header, header *, .navbar, .navbar * {
-            opacity: 1 !important;
-        }
+        header, header *, .navbar, .navbar * { opacity: 1 !important; }
     </style>
 
     <script type="module">
@@ -106,15 +93,12 @@
         const app  = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // Security Check: Redirects to index.html if user isn't logged in, otherwise reveals the app
-
         onAuthStateChanged(auth, (user) => {
             if (!user) {
                 window.location.href = "index.html";
             } else {
                 console.log("Access verified for account:", user.email);
                 document.getElementById("garden-app").style.display = "block";
-
                 const emailEl = document.getElementById("settings-email-display");
                 if (emailEl) emailEl.textContent = user.email;
             }
@@ -122,7 +106,6 @@
     </script>
 </head>
 <body>
-
 
     <div id="loader-viewport">
         <div id="container">
@@ -134,10 +117,9 @@
         </div>
     </div>
 
-    <!-- The Navbar  -->
-
     <div id="garden-app" class="protected-content">
 
+        <!-- The Navbar -->
         <nav class="navbar">
             <div class="nav-container">
                 <a href="#" class="nav-logo" data-target="home-page">
@@ -157,8 +139,7 @@
             </div>
         </nav>
 
-            <!-- The Settings Panel -->
-
+        <!-- The Settings Panel -->
         <div id="settings-panel-sidebar" class="settings-sidebar">
             <div class="settings-sidebar-header">
                 <h3 data-i18n="settings-title">Settings</h3>
@@ -172,17 +153,14 @@
 
                 <div class="settings-section account-wrapper">
                     <h4 class="settings-section-title" data-i18n="section-account">Account</h4>
-
                     <div class="profile-block">
                         <p class="profile-email">Signed in as <span id="settings-email-display">—</span></p>
                         <input type="text" id="display-name-input" class="name-input" placeholder="Set a display name..." />
                     </div>
-
                     <div id="apply-changes-prompt" class="apply-prompt-box">
                         <span>Apply Changes?</span>
                         <button type="button" id="save-display-name-btn">Save</button>
                     </div>
-
                     <button id="logout-btn" class="logout-danger-btn">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span data-i18n="btn-logout">Log Out</span>
@@ -228,8 +206,7 @@
                     </div>
                 </div>
 
-                <!-- *Awesome Language Translations* -->
-                
+                <!-- Language Translations -->
                 <div class="settings-section">
                     <h4 class="settings-section-title" data-i18n="section-language">Language & Region</h4>
 
@@ -286,12 +263,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
-            <!-- The Main Content Area -->
-
+        <!-- The Main Content Area -->
         <main class="main-content">
 
             <div id="home-page" class="page-section">
@@ -309,13 +284,11 @@
                 </header>
 
                 <!-- Software Card Section -->
-
                 <div class="software-section">
                     <h2 data-i18n="section-software">Software</h2>
                     <p class="section-desc" data-i18n="section-software-desc">
                         Explore my collection of trustworthy software, that might just make your life easier!
                     </p>
-
                     <div class="software-grid">
                         <div class="software-card" data-software="vscode">
                             <h3>VSCode</h3>
@@ -328,15 +301,34 @@
                     </div>
                 </div>
 
-                <!-- Tools & Optimizations Section -->
+                <!-- Editing Tools Section -->
+                
+                <div class="editing-section" style="margin-top: 3rem; width: 100%; max-width: 800px;">
+                    <div class="software-section">
+                        <h2>Editing Software</h2>
+                        <p class="section-desc">
+                            Explore my collection of Tools made for editing, and creating content!
+                        </p>
+                        <div class="software-grid">
+                            <div class="software-card" data-software="capcut">
+                                <h3>Capcut</h3>
+                                <p>A powerful video editing tool that's perfect for creating short-form, and long-form content!</p>
+                            </div>
+                            <div class="software-card" data-software="davinci-editing">
+                                <h3>DaVinci Resolve</h3>
+                                <p>Professional video editing and color grading software used by Hollywood studios worldwide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Tools & Optimizations Section -->
                 <div class="tools-section" style="margin-top: 3rem; width: 100%; max-width: 800px;">
                     <div class="software-section">
                         <h2 data-i18n="section-tools">Tools & Optimizations</h2>
                         <p class="section-desc" data-i18n="section-tools-desc">
                             Explore my collection of Tools made for Optimization, and debloating!
                         </p>
-
                         <div class="software-grid">
                             <div class="software-card" data-software="powertoys">
                                 <h3>PowerToys</h3>
@@ -352,15 +344,12 @@
             </div>
 
             <!-- The About Page -->
-
             <div id="about-page" class="page-section hidden">
                 <header class="welcome-garden">
                     <h1>About the Garden</h1>
                     <p class="subtitle">A digital greenhouse that is FREE from ads, pop-ups, and any type of payment bribing.</p>
                     <hr class="welcome-divider">
                 </header>
-
-            <!-- Socials and Philosophy -->
 
                 <div class="software-section">
                     <h2>My Philosophy</h2>
@@ -395,7 +384,6 @@
             </div>
 
             <!-- The Guides Page -->
-
             <div id="tutorials-page" class="page-section hidden">
                 <header class="welcome-garden">
                     <h1>Guides & Tutorials for Everything!</h1>
@@ -410,7 +398,6 @@
                     <p class="section-desc">
                         Click on any guide below to deep-dive into environment configurations, layout mechanics, and performance optimizations.
                     </p>
-
                     <div class="tutorial-grid">
                         <div class="tutorial-card" data-tutorial="ligatures">
                             <div class="tutorial-badge">Coding</div>
@@ -445,11 +432,9 @@
 
     </div>
 
-
     <!-- The Footer (with automatic year change) -->
-
     <div class="footer">
-        <p>&copy; <span id="current-year">2026</span> DigitalGarden by DangerEditz. All rights reserved.</p>
+        <p>© <span id="current-year">2026</span> DigitalGarden · Made by DangerEditz</p>
     </div>
 
     <script>
