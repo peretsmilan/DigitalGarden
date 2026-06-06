@@ -242,6 +242,64 @@ const softwareData = {
             }
         ],
         downloadUrl: "https://www.minitool.com/partition-manager/"
+    },
+
+        "warzone": {
+        title: "Call of Duty: Warzone",
+        tagline: "A fast-paced, free-to-play Battle Royale where strategy meets high-stakes survival.",
+        description: "Drop into a massive arena where survival is everything. It’s an absolute blast to play with friends, but fair warning: the learning curve is steep, the pacing is intense, and the gunfights are sweaty. If you are looking for a casual, stress-free cozy game... this definitely isn't it.",
+        extensions: [
+            {
+                name: "Loadout Customization",
+                desc: " some major gunsmithing. Build your dream weapon loadout with hundreds of attachments, optical sights, and perks tailored exactly to your playstyle."
+            },
+            {
+                name: "Massive, Evolving Maps",
+                desc: "Explore sprawling battlegrounds packed with diverse terrain, urban areas, and high-tier loot hot spots. Just keep your eyes peeled—danger hides around every corner."
+            },
+            {
+                name: "Squad Tactics & Crossplay",
+                desc: "Drop in solo or squad up in Duos, Trios, or Quads. Full cross-platform support means you can easily team up—or compete against—friends on PC and console."
+            },
+            {
+                name: "The Gulag Rematch",
+                desc: "Death isn't the end. Elimination sends you to the Gulag for a tense 1v1 showdown with random weapons. Win the duel, and you earn a free drop back into the match."
+            },
+            {
+                name: "Seasonal Events & Content",
+                desc: "The battlefield never stays the same. Regular updates introduce new weapons, limited-time game modes, and massive seasonal community events."
+            }
+        ],
+        downloadUrl: "https://store.steampowered.com/app/1962663/Call_of_Duty_Warzone/"
+    },
+
+"rocket-league": {
+        title: "Rocket League",
+        tagline: "Fun game mechanics, hard to get used to, but hilarious with friends! This is a relaxing game to play.",
+        description: "A high-powered hybrid of arcade-style soccer and vehicular mayhem! It's easy to understand but has a massive skill ceiling. Perfect for chilling with friends, pulling off accidental aerial goals, or missing the ball entirely while driving at supersonic speeds.",
+        extensions: [
+            {
+                name: "Physics-Based Gameplay",
+                desc: "Everything relies on momentum and angles. Mastering how your car hits the giant soccer ball is the key to going from zero to hero."
+            },
+            {
+                name: "Deep Customization",
+                desc: "Unlock thousands of cosmetic items, including cars, decals, wheels, rocket boosts, and goal explosions to style on your opponents."
+            },
+            {
+                name: "Cross-Platform Play",
+                desc: "Party up with your crew no matter where they play. Team up across PC, PlayStation, Xbox, and Nintendo Switch seamlessly."
+            },
+            {
+                name: "Extra Game Modes",
+                desc: "Want a break from standard soccer? Dive into Hoops (basketball), Snow Day (hockey), or Rumble (soccer with chaotic power-ups)."
+            },
+            {
+                name: "Competitive Seasons",
+                desc: "Climb the ranks from Bronze all the way to Grand Champion and Supersonic Legend, earning exclusive rewards at the end of every season."
+            }
+        ],
+        downloadUrl: "https://store.epicgames.com/en-US/p/rocket-league"
     }
 };
 

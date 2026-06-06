@@ -1287,7 +1287,6 @@ body.cursor-large * {
   }
 }
 
-/* ── Loader Screen (replace the existing #loader-viewport block) ─────────── */
 
 #loader-viewport {
   position: fixed;
@@ -1314,32 +1313,29 @@ body.cursor-large * {
 
 .loader-stage {
   display: flex;
-  flex-direction: column;  /* Changed from row to column */
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
-  gap: 4rem;               /* Adds clean breathing room between the rows */
+  gap: 4rem;            
 }
 
-/* The three shape loaders sit side-by-side */
+
 .loader-stage > .swipe {
-  /* swipe section already uses flex, just needs gap breathing room */
   margin-top: 0;
 }
 
 .shapes-row {
   display: flex;
-  flex-direction: row;      /* keeps shapes side-by-side */
+  flex-direction: row;    
   align-items: center;
 }
 
-/* Update your existing .card-load to match the pitch black theme */
 .card-load {
-  /* Set variable to absolute black to match your viewport overlay background */
   --bg-color: #000000; 
   background-color: var(--bg-color);
   padding: 1rem 2rem;
   border-radius: 1.25rem;
-  margin-top: -1rem; /* Visual balance tweak to pull it closer to the elements above */
+  margin-top: -1rem; 
 }
 
 .loader-eve {
@@ -1357,14 +1353,14 @@ body.cursor-large * {
 
 .loader-eve p {
   margin: 0;
-  line-height: 40px; /* Matches the parent container height */
+  line-height: 40px; 
 }
 
 .words {
   overflow: hidden;
   position: relative;
-  height: 40px;      /* 👈 Explicitly lock the height of the visible slot */
-  display: block;    /* 👈 Prevents flex layout from stretching the wrapper */
+  height: 40px;  
+  display: block;  
 }
 
 .words::after {
@@ -1382,8 +1378,8 @@ body.cursor-large * {
 
 .word {
   display: block;
-  height: 40px;       /* 👈 Hard match to the container height */
-  line-height: 40px;  /* 👈 Perfectly centers the text inside the 40px slot */
+  height: 40px;      
+  line-height: 40px;  
   padding-left: 8px;
   color: #956afa;
   animation: spin_4991 4s infinite;
