@@ -107,15 +107,53 @@
 </head>
 <body>
 
-    <div id="loader-viewport">
-        <div id="container">
-            <div class="ring"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-            <div id="h3">Loading...</div>
+<div id="loader-viewport">
+    <div class="loader-stage">
+ 
+        <div class="shapes-row">
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle r="32" cy="40" cx="40" id="test"></circle>
+                </svg>
+            </div>
+ 
+            <div class="loader triangle">
+                <svg viewBox="0 0 86 80">
+                    <polygon points="43 8 79 72 7 72"></polygon>
+                </svg>
+            </div>
+ 
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect height="64" width="64" y="8" x="8"></rect>
+                </svg>
+            </div>
+        </div>
+ 
+        <section class="swipe">
+            <div class="slider" style="--i:0"></div>
+            <div class="slider" style="--i:1"></div>
+            <div class="slider" style="--i:2"></div>
+            <div class="slider" style="--i:3"></div>
+            <div class="slider" style="--i:4"></div>
+        </section>
+ 
+    </div>
+
+    <div class="card-load">
+        <div class="loader-eve">
+            <p>Loading</p>
+            <div class="words">
+                <span class="word">Buttons</span>
+                <span class="word">Forms</span>
+                <span class="word">Switches</span>
+                <span class="word">Cards</span>
+                <span class="word">Buttons</span>
+            </div>
         </div>
     </div>
+</div>
+
 
     <div id="garden-app" class="protected-content">
 

@@ -4,6 +4,7 @@ window.addEventListener("load", () => {
     const manimVideo = document.getElementById("manim-video");
 
     if (preloader) {
+        // 2000ms so the animation plays for 2 seconds before fading out
         setTimeout(() => {
             preloader.classList.add("fade-out");
 
@@ -16,9 +17,10 @@ window.addEventListener("load", () => {
                 );
             }
 
+            // Remove from DOM after the 0.5s CSS fade finishes
             setTimeout(() => preloader.remove(), 500);
 
-        }, 3000);
+        }, 2000);
     }
 });
 
