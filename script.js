@@ -1,9 +1,7 @@
 window.addEventListener("load", () => {
-    const preloader    = document.getElementById("loader-viewport");
-    const appContent   = document.getElementById("garden-app");
-    const manimVideo   = document.getElementById("manim-video");
-
-    // Manim Animation Header, and Website Pre-Loader
+    const preloader  = document.getElementById("loader-viewport");
+    const appContent = document.getElementById("garden-app");
+    const manimVideo = document.getElementById("manim-video");
 
     if (preloader) {
         setTimeout(() => {
@@ -18,21 +16,14 @@ window.addEventListener("load", () => {
                 );
             }
 
-            setTimeout(() => preloader.remove(), 500); 
+            setTimeout(() => preloader.remove(), 500);
 
         }, 3000);
     }
 });
 
-const isLoggedIn = localStorage.getItem("isLoggedIn");
-if (isLoggedIn !== "true") {
-    window.location.href = "index.html";
-} else {
-    console.log("Welcome back! Logged in as:", localStorage.getItem("userEmail"));
-}
 
-
-// Information for Modal Pop-ups
+// ── Software Modal Data ───────────────────────────────────────────────────────
 
 const softwareData = {
     vscode: {
@@ -135,7 +126,7 @@ const softwareData = {
         downloadUrl: "https://www.virtualbox.org/"
     },
 
-    // ── Editing Tools Section ─────────────────────────────────────────────────
+    // ── Editing Tools ─────────────────────────────────────────────────────────
 
     capcut: {
         title: "CapCut",
@@ -182,7 +173,6 @@ const softwareData = {
             {
                 name: "Fusion VFX and Motion Graphics",
                 desc: "Create cinematic visual effects, compositing, and dynamic 2D/3D titles using a powerful node-based procedural workflow."
-
             },
             {
                 name: "Multi-User Collaboration",
@@ -190,8 +180,71 @@ const softwareData = {
             }
         ],
         downloadUrl: "https://www.blackmagicdesign.com/products/davinciresolve"
+    },
+
+    // ── Backup & Recovery ─────────────────────────────────────────────────────
+
+    "veeam-agent": {
+        title: "Veeam Agent for Windows",
+        tagline: "Free, reliable backup and recovery for Windows desktops and servers.",
+        description: "Veeam Agent for Microsoft Windows (Free edition) delivers enterprise-grade local backup for personal and non-enterprise use. It creates full, volume-level, or file-level backups to an external drive, NAS, or network share — and lets you do a full bare-metal restore from bootable recovery media if your system ever fails completely.",
+        extensions: [
+            {
+                name: "Bare-Metal Recovery",
+                desc: "Restore your entire operating system, installed apps, and personal files to a fresh drive using Veeam's bootable WinPE recovery ISO — no Windows reinstall required."
+            },
+            {
+                name: "Volume-Level Backups",
+                desc: "Back up entire disk volumes (including the OS partition) as compressed, deduplicated image files, capturing everything a file-level backup would miss."
+            },
+            {
+                name: "Scheduled Backup Jobs",
+                desc: "Set daily, weekly, or event-triggered schedules (e.g., on lock or USB connect) so backups run automatically without manual intervention."
+            },
+            {
+                name: "Retention Policies",
+                desc: "Keep a configurable number of restore points so you can roll back to multiple historical states, not just the most recent backup."
+            },
+            {
+                name: "Recovery Media Builder",
+                desc: "Generate a bootable USB or ISO that contains a minimal recovery environment — essential for restoring a machine that can no longer boot into Windows."
+            }
+        ],
+        downloadUrl: "https://www.veeam.com/windows-endpoint-server-backup-free.html"
+    },
+
+    "minitool-part": {
+        title: "MiniTool Partition Wizard",
+        tagline: "User-friendly Windows partition manager for disk and partition tasks.",
+        description: "MiniTool Partition Wizard Free is a full-featured disk management utility that goes far beyond what Windows' built-in Disk Management offers. It lets you resize, move, merge, split, format, and convert partitions without data loss, and includes a disk benchmark and space analyzer in the same package.",
+        extensions: [
+            {
+                name: "Resize & Move Partitions",
+                desc: "Drag partition boundaries to extend or shrink volumes — including the system C: drive — without needing to reformat or reinstall Windows."
+            },
+            {
+                name: "Merge Partitions",
+                desc: "Combine two adjacent partitions into a single, larger volume in a few clicks, consolidating wasted unallocated space cleanly."
+            },
+            {
+                name: "MBR ↔ GPT Conversion",
+                desc: "Convert a disk's partition table between MBR and GPT formats non-destructively, which is often required before enabling UEFI boot or installing Windows 11."
+            },
+            {
+                name: "Disk Benchmark",
+                desc: "Measure sequential and random read/write speeds of any drive to verify real-world SSD or HDD performance before and after changes."
+            },
+            {
+                name: "Space Analyzer",
+                desc: "Scan any volume and visualize exactly which folders and files are consuming the most disk space, helping you identify and clean up bloat fast."
+            }
+        ],
+        downloadUrl: "https://www.minitool.com/partition-manager/"
     }
 };
+
+
+// Guides Data
 
 const tutorialData = {
     ligatures: {
@@ -398,7 +451,7 @@ function applyTranslations(lang) {
 }
 
 
-// Navigation System
+// Navigation
 
 const routes = document.querySelectorAll(".nav-route, .nav-logo");
 const pages  = document.querySelectorAll(".page-section");
@@ -430,11 +483,25 @@ routes.forEach(route => {
 });
 
 
-// Modal Layout, Pop-up, and animations
+// Modal System
 
 const modal    = document.getElementById("software-modal");
 const modalBody = document.getElementById("modal-body");
 const closeBtn  = document.querySelector(".close-button");
+
+function openModal() {
+    modal.style.display = "flex";
+    setTimeout(() => modal.classList.add("is-open"), 10);
+}
+
+function closeModal() {
+    modal.classList.remove("is-open");
+    modal.classList.add("is-closing");
+    setTimeout(() => {
+        modal.style.display = "none";
+        modal.classList.remove("is-closing");
+    }, 250);
+}
 
 document.querySelectorAll(".software-card").forEach(card => {
     card.addEventListener("click", () => {
@@ -505,21 +572,7 @@ document.querySelectorAll(".tutorial-card").forEach(card => {
     });
 });
 
-function openModal() {
-    modal.style.display = "flex";
-    setTimeout(() => modal.classList.add("is-open"), 10);
-}
-
-function closeModal() {
-    modal.classList.remove("is-open");
-    modal.classList.add("is-closing");
-    setTimeout(() => {
-        modal.style.display = "none";
-        modal.classList.remove("is-closing");
-    }, 250);
-}
-
-closeBtn.addEventListener("click", closeModal);
+if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
 window.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
@@ -534,15 +587,15 @@ window.addEventListener("keydown", (e) => {
 });
 
 
-// DOM Initialization for Event Listeners and Settings Management
+// ── DOMContentLoaded: Settings & UI ──────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Sound System (Haven't Added Yet)
+    // Sound System (no sound yet)
 
     const audioToggle = document.getElementById("audio-toggle-checkbox");
-    const clickSound  = new Audio("#");
-    const swooshSound = new Audio("#");
+    const clickSound  = new Audio("assets/sounds/click.mp3");
+    const swooshSound = new Audio("assets/sounds/swoosh.mp3");
 
     clickSound.volume  = 0.20;
     swooshSound.volume = 0.05;
@@ -603,7 +656,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Logout
+    // Logout Button
 
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
@@ -615,7 +668,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Display Name Customization
+    // Display Name
 
     const displayNameInput = document.getElementById("display-name-input");
     const applyPrompt      = document.getElementById("apply-changes-prompt");
@@ -627,7 +680,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let confirmedName = "";
 
     if (displayNameInput && applyPrompt && saveNameBtn) {
-        // Wait for Firebase to inject the email before reading it
         setTimeout(() => {
             const savedName = localStorage.getItem("garden-display-name");
 
@@ -663,11 +715,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         saveNameBtn.addEventListener("click", () => {
             const newName = displayNameInput.value.trim();
-
             if (newName !== "") {
                 localStorage.setItem("garden-display-name", newName);
                 confirmedName = newName;
-
                 if (emailDisplay) emailDisplay.textContent = newName;
                 applyPrompt.classList.remove("show");
                 playClickSound();
@@ -691,7 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Compacted Layout Mode
+    // Compact Layout
 
     const spaceBox = document.getElementById("compact-toggle-checkbox");
     if (spaceBox) {
@@ -708,7 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // "Ghost" Mode
+    // Ghost Mode
 
     const ghostToggle = document.getElementById("ghost-toggle-checkbox");
     if (ghostToggle) {
@@ -719,7 +769,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Language Selection
+    // Language
 
     const languageSelect = document.getElementById("language-select");
     if (languageSelect) {
@@ -748,7 +798,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Reduced Motion Mode
+    // Reduce Motion
 
     const reduceMotionCheckbox = document.getElementById("reduce-motion-checkbox");
     if (reduceMotionCheckbox) {
@@ -763,7 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // High Contrast Mode
+    // High Contrast
 
     const highContrastCheckbox = document.getElementById("high-contrast-checkbox");
     if (highContrastCheckbox) {
@@ -778,7 +828,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Cursor Size Control
+    // Cursor Size
 
     const cursorSizeSelect = document.getElementById("cursor-size-select");
     if (cursorSizeSelect) {
